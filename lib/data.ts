@@ -77,8 +77,10 @@ export interface CadencePoll {
 // KPI Data
 // ─────────────────────────────────────────────
 export const kpiData = [
-  { label: "Total Polls",         value: 32, delta: "↑4 new",    color: "purple", icon: "pie-chart" },
-  { label: "Total Cadence Polls", value: 12, delta: "Recurring", color: "violet", icon: "repeat"    },
+  { label: "Total Polls",                    value: 32, delta: "↑4 new",    color: "purple", icon: "pie-chart" },
+  { label: "Total Cadence Polls",            value: 12, delta: "Recurring", color: "violet", icon: "repeat"    },
+  { label: "Total Feedbacks Received",       value: 87, delta: "+23 this week", color: "emerald", icon: "inbox" },
+  { label: "Policy Announced After Feedback",value: 9,  delta: "This quarter",  color: "blue",    icon: "megaphone" },
 ];
 
 export const totalPollsBreakdown = [
