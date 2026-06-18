@@ -85,7 +85,7 @@ export const kpiData = [
   { label: "Results Pending to Share",  value: 7,  delta: "Action needed", color: "indigo", icon: "inbox"     },
   { label: "Total Cadence Polls",        value: 12, delta: "Recurring",    color: "violet", icon: "repeat"    },
   { label: "Scheduled",                 value: 9,  delta: "Upcoming",      color: "teal",   icon: "calendar"  },
-  { label: "Overdue",                   value: 3,  delta: "Needs action",  color: "rose",   icon: "alert"     },
+  { label: "Pending Cadence Polls",      value: 3,  delta: "Needs action",  color: "rose",   icon: "alert"     },
   { label: "Total Feedback Received",   value: 87, delta: "+23 this week", color: "indigo", icon: "inbox"     },
   { label: "Actionable Feedbacks",      value: 24, delta: "Need review",   color: "orange", icon: "zap"       },
   { label: "Non-Actionable Feedbacks",  value: 31, delta: "Archived",      color: "slate",  icon: "archive"   },
