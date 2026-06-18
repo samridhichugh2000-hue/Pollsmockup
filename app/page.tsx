@@ -2,6 +2,7 @@ import { DashboardLayout }      from "@/components/dashboard/DashboardLayout";
 import { KPICards }              from "@/components/dashboard/KPICards";
 import { TotalPollsBreakdown }   from "@/components/dashboard/TotalPollsBreakdown";
 import { CadenceBreakdown }      from "@/components/dashboard/CadenceBreakdown";
+import { FeedbackBreakdown }     from "@/components/dashboard/FeedbackBreakdown";
 import { PollRequestsTable }     from "@/components/dashboard/PollRequestsTable";
 import { FeedbackTable }         from "@/components/dashboard/FeedbackTable";
 import { ActionReport }          from "@/components/dashboard/ActionReport";
@@ -17,6 +18,7 @@ export default function OverviewPage() {
       <section aria-label="Breakdowns" className="flex gap-5 flex-wrap">
         <TotalPollsBreakdown />
         <CadenceBreakdown />
+        <FeedbackBreakdown />
       </section>
       <section aria-label="Poll Requests"><PollRequestsTable /></section>
       <section aria-label="Poll Cadence"><PollCadence /></section>

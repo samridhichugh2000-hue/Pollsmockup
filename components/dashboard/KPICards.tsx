@@ -1,24 +1,16 @@
-import {
-  PieChart, Repeat2, CalendarClock, AlertCircle, Inbox, Zap, Archive, FolderX,
-} from "lucide-react";
+import { PieChart, Repeat2 } from "lucide-react";
 import { kpiData } from "@/lib/data";
 
-const icons = [PieChart, Repeat2, CalendarClock, AlertCircle, Inbox, Zap, Archive, FolderX];
+const icons = [PieChart, Repeat2];
 
 const colorConfig = [
-  { border: "border-t-purple-500", iconBg: "bg-purple-100",  iconTxt: "text-purple-600 dark:text-purple-400",  delta: "text-emerald-600 dark:text-emerald-400" },
-  { border: "border-t-violet-500", iconBg: "bg-violet-100",  iconTxt: "text-violet-600 dark:text-violet-400",  delta: "text-violet-600 dark:text-violet-400"   },
-  { border: "border-t-teal-500",   iconBg: "bg-teal-100",    iconTxt: "text-teal-600 dark:text-teal-400",      delta: "text-teal-600 dark:text-teal-400"       },
-  { border: "border-t-rose-500",   iconBg: "bg-rose-100",    iconTxt: "text-rose-600 dark:text-rose-400",      delta: "text-rose-600 dark:text-rose-400"       },
-  { border: "border-t-emerald-500",iconBg: "bg-emerald-100", iconTxt: "text-emerald-600 dark:text-emerald-400",delta: "text-emerald-600 dark:text-emerald-400" },
-  { border: "border-t-orange-500", iconBg: "bg-orange-100",  iconTxt: "text-orange-600 dark:text-orange-400",  delta: "text-orange-600 dark:text-orange-400"   },
-  { border: "border-t-slate-400",  iconBg: "bg-slate-100",   iconTxt: "text-slate-500 dark:text-slate-400",    delta: "text-slate-500 dark:text-slate-400"     },
-  { border: "border-t-red-500",    iconBg: "bg-red-100",     iconTxt: "text-red-600 dark:text-red-400",        delta: "text-red-600 dark:text-red-400"         },
+  { border: "border-t-purple-500", iconBg: "bg-purple-100", iconTxt: "text-purple-600 dark:text-purple-400", delta: "text-emerald-600 dark:text-emerald-400" },
+  { border: "border-t-violet-500", iconBg: "bg-violet-100", iconTxt: "text-violet-600 dark:text-violet-400", delta: "text-violet-600 dark:text-violet-400"   },
 ];
 
 export function KPICards() {
   return (
-    <div className="grid grid-cols-4 sm:grid-cols-8 gap-3">
+    <div className="grid grid-cols-2 sm:grid-cols-2 gap-3 max-w-xs">
       {kpiData.map((kpi, i) => {
         const Icon = icons[i];
         const col  = colorConfig[i];
