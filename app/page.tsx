@@ -1,5 +1,4 @@
 import { DashboardLayout }      from "@/components/dashboard/DashboardLayout";
-import { QuickFilters }          from "@/components/dashboard/QuickFilters";
 import { KPICards }              from "@/components/dashboard/KPICards";
 import { PollRequestsTable }     from "@/components/dashboard/PollRequestsTable";
 import { FeedbackTable }         from "@/components/dashboard/FeedbackTable";
@@ -12,9 +11,7 @@ import { PollCadence }           from "@/components/dashboard/PollCadence";
 export default function OverviewPage() {
   return (
     <DashboardLayout title="Polls Dashboard" subtitle="Overview · Q2 2026">
-      <QuickFilters />
-
-      <section aria-label="KPI Overview"><KPICards /></section>
+<section aria-label="KPI Overview"><KPICards /></section>
       <section aria-label="Poll Requests"><PollRequestsTable /></section>
       <section aria-label="Poll Cadence"><PollCadence /></section>
       <section aria-label="Feedback"><FeedbackTable /></section>
