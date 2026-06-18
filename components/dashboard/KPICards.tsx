@@ -1,18 +1,20 @@
-import { PieChart, Repeat2, Inbox, Megaphone } from "lucide-react";
+import { PieChart, Repeat2, Inbox, Megaphone, TrendingUp, CheckCircle2 } from "lucide-react";
 import { kpiData } from "@/lib/data";
 
-const icons = [PieChart, Repeat2, Inbox, Megaphone];
+const icons = [PieChart, Repeat2, Inbox, Megaphone, TrendingUp, CheckCircle2];
 
 const colorConfig = [
   { border: "border-t-purple-500",  iconBg: "bg-purple-100",  iconTxt: "text-purple-600 dark:text-purple-400",  delta: "text-emerald-600 dark:text-emerald-400" },
   { border: "border-t-violet-500",  iconBg: "bg-violet-100",  iconTxt: "text-violet-600 dark:text-violet-400",  delta: "text-violet-600 dark:text-violet-400"   },
   { border: "border-t-emerald-500", iconBg: "bg-emerald-100", iconTxt: "text-emerald-600 dark:text-emerald-400",delta: "text-emerald-600 dark:text-emerald-400" },
   { border: "border-t-blue-500",    iconBg: "bg-blue-100",    iconTxt: "text-blue-600 dark:text-blue-400",      delta: "text-blue-600 dark:text-blue-400"       },
+  { border: "border-t-orange-500",  iconBg: "bg-orange-100",  iconTxt: "text-orange-600 dark:text-orange-400",  delta: "text-orange-600 dark:text-orange-400"   },
+  { border: "border-t-teal-500",    iconBg: "bg-teal-100",    iconTxt: "text-teal-600 dark:text-teal-400",      delta: "text-teal-600 dark:text-teal-400"       },
 ];
 
 export function KPICards() {
   return (
-    <div className="grid grid-cols-4 gap-2">
+    <div className="grid grid-cols-6 gap-2">
       {kpiData.map((kpi, i) => {
         const Icon = icons[i];
         const col  = colorConfig[i];

@@ -80,7 +80,9 @@ export const kpiData = [
   { label: "Total Polls",                    value: 32, delta: "↑4 new",    color: "purple", icon: "pie-chart" },
   { label: "Total Cadence Polls",            value: 12, delta: "Recurring", color: "violet", icon: "repeat"    },
   { label: "Total Feedbacks Received",       value: 87, delta: "+23 this week", color: "emerald", icon: "inbox" },
-  { label: "Policy Announced After Feedback",value: 9,  delta: "This quarter",  color: "blue",    icon: "megaphone" },
+  { label: "Policy Announced After Feedback",  value: 9,  delta: "This quarter", color: "blue",   icon: "megaphone" },
+  { label: "Non RMS Improvement After Feedback",value: 14, delta: "Logged",       color: "orange", icon: "trending"  },
+  { label: "RMS Improvement After Feedback",    value: 6,  delta: "Tracked",      color: "teal",   icon: "check"     },
 ];
 
 export const totalPollsBreakdown = [
