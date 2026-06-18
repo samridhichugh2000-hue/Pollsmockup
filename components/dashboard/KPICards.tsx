@@ -30,17 +30,17 @@ export function KPICards() {
         return (
           <div
             key={kpi.label}
-            className={`glass glass-hover rounded-xl p-4 border-t-2 ${col.border} transition-all cursor-pointer fade-up`}
+            className={`glass glass-hover rounded-xl p-2.5 border-t-2 ${col.border} transition-all cursor-pointer fade-up`}
             style={{ animationDelay: `${i * 55}ms` }}
           >
-            <div className="flex items-start justify-between mb-3">
-              <div className={`w-7 h-7 rounded-lg ${col.iconBg} flex items-center justify-center flex-shrink-0`}>
-                <Icon className={`w-3.5 h-3.5 ${col.iconTxt}`} />
+            <div className="flex items-start justify-between mb-2">
+              <div className={`w-5 h-5 rounded-md ${col.iconBg} flex items-center justify-center flex-shrink-0`}>
+                <Icon className={`w-2.5 h-2.5 ${col.iconTxt}`} />
               </div>
             </div>
-            <p className="text-xl font-bold text-slate-900 dark:text-slate-100">{kpi.value}</p>
-            <p className="text-[10px] text-slate-500 dark:text-slate-500 mt-0.5 leading-tight">{kpi.label}</p>
-            <p className={`text-[9px] font-medium mt-1 ${col.delta}`}>{kpi.delta}</p>
+            <p className="text-base font-bold text-slate-900 dark:text-slate-100">{kpi.value}</p>
+            <p className="text-[8px] text-slate-500 dark:text-slate-500 mt-0.5 leading-tight">{kpi.label}</p>
+            <p className={`text-[7px] font-medium mt-0.5 ${col.delta}`}>{kpi.delta}</p>
           </div>
         );
       })}
