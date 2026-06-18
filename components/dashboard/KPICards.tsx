@@ -30,18 +30,6 @@ export function KPICards() {
             <p className="text-lg font-bold text-slate-900 dark:text-slate-100 leading-none">{kpi.value}</p>
             <p className="text-[9px] text-slate-500 dark:text-slate-400 mt-1 leading-tight">{kpi.label}</p>
             <p className={`text-[8px] font-medium mt-0.5 ${col.delta}`}>{kpi.delta}</p>
-            {i === 0 && (
-              <div className="mt-2 pt-2 border-t border-slate-100 dark:border-slate-700 flex flex-col gap-0.5">
-                <div className="flex justify-between">
-                  <span className="text-[8px] text-slate-400">Not sent for approval</span>
-                  <span className="text-[8px] font-semibold text-slate-700 dark:text-slate-300">6</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-[8px] text-slate-400">Approval pending</span>
-                  <span className="text-[8px] font-semibold text-slate-700 dark:text-slate-300">5</span>
-                </div>
-              </div>
-            )}
           </div>
         );
       })}
