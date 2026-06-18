@@ -1,13 +1,15 @@
 const feedbackBreakdown = [
+  { label: "Total Feedbacks Received on Polls", value: 87 },
   { label: "Total Actionable Feedback",         value: 24 },
   { label: "Total Non-Actionable Feedback",     value: 31 },
   { label: "Total Feedback Pending for Action", value: 18 },
+  { label: "Policy Announced After Feedback",   value: 9  },
   { label: "Process Improved After Feedback",   value: 7  },
 ];
 
 export function FeedbackBreakdown() {
   return (
-    <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-3 w-64">
+    <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-3">
       <p className="text-[10px] font-semibold text-slate-700 dark:text-slate-300 mb-2">
         Feedback Breakdown — <span className="text-slate-900 dark:text-slate-100">87</span>
       </p>

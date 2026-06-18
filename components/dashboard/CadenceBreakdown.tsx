@@ -8,7 +8,7 @@ const cadenceBreakdown = [
 
 export function CadenceBreakdown() {
   return (
-    <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-3 w-64">
+    <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-3">
       <p className="text-[10px] font-semibold text-slate-700 dark:text-slate-300 mb-2">
         Cadence Breakdown — <span className="text-slate-900 dark:text-slate-100">12</span>
       </p>

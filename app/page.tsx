@@ -15,7 +15,7 @@ export default function OverviewPage() {
   return (
     <DashboardLayout title="Polls Dashboard" subtitle="Overview · Q2 2026">
 <section aria-label="KPI Overview"><KPICards /></section>
-      <section aria-label="Breakdowns" className="flex gap-5 flex-wrap">
+      <section aria-label="Breakdowns" className="grid grid-cols-3 gap-4">
         <TotalPollsBreakdown />
         <CadenceBreakdown />
         <FeedbackBreakdown />
