@@ -1,4 +1,4 @@
-import { Mail, Link2, Clock, CheckCircle2, XCircle, FileText } from "lucide-react";
+import { Mail, Link2, Clock, CheckCircle2, XCircle, FileText, Send } from "lucide-react";
 import { DashboardLayout }   from "@/components/dashboard/DashboardLayout";
 import { PollRequestsTable } from "@/components/dashboard/PollRequestsTable";
 import { StatusBadge }       from "@/components/ui/StatusBadge";
@@ -14,12 +14,13 @@ const closed      = pollRequests.filter((r) => r.status === "Closed").length;
 const draft       = pollRequests.filter((r) => r.status === "Draft").length;
 
 const statCards = [
-  { label: "Total Requests",     value: total,       icon: FileText,     cls: "border-t-purple-500",  iconCls: "bg-purple-100 text-purple-600 dark:bg-purple-500/15 dark:text-purple-400"  },
-  { label: "From Mailbox",       value: fromMailbox, icon: Mail,         cls: "border-t-blue-500",    iconCls: "bg-blue-100 text-blue-600 dark:bg-blue-500/15 dark:text-blue-400"          },
-  { label: "From Form",          value: fromForm,    icon: Link2,        cls: "border-t-emerald-500", iconCls: "bg-emerald-100 text-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-400"},
-  { label: "Awaiting Approval",  value: awaiting,    icon: Clock,        cls: "border-t-amber-500",   iconCls: "bg-amber-100 text-amber-600 dark:bg-amber-500/15 dark:text-amber-400"      },
-  { label: "Active",             value: active,      icon: CheckCircle2, cls: "border-t-cyan-500",    iconCls: "bg-cyan-100 text-cyan-600 dark:bg-cyan-500/15 dark:text-cyan-400"          },
-  { label: "Closed",             value: closed,      icon: XCircle,      cls: "border-t-red-400",     iconCls: "bg-red-100 text-red-600 dark:bg-red-500/12 dark:text-red-400"              },
+  { label: "Total Requests",        value: total,       icon: FileText,     cls: "border-t-purple-500",  iconCls: "bg-purple-100 text-purple-600 dark:bg-purple-500/15 dark:text-purple-400"  },
+  { label: "From Mailbox",          value: fromMailbox, icon: Mail,         cls: "border-t-blue-500",    iconCls: "bg-blue-100 text-blue-600 dark:bg-blue-500/15 dark:text-blue-400"          },
+  { label: "From Form",             value: fromForm,    icon: Link2,        cls: "border-t-emerald-500", iconCls: "bg-emerald-100 text-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-400"},
+  { label: "Not Sent for Approval", value: draft,       icon: Send,         cls: "border-t-slate-400",   iconCls: "bg-slate-100 text-slate-600 dark:bg-slate-500/15 dark:text-slate-400"      },
+  { label: "Awaiting Approval",     value: awaiting,    icon: Clock,        cls: "border-t-amber-500",   iconCls: "bg-amber-100 text-amber-600 dark:bg-amber-500/15 dark:text-amber-400"      },
+  { label: "Active",                value: active,      icon: CheckCircle2, cls: "border-t-cyan-500",    iconCls: "bg-cyan-100 text-cyan-600 dark:bg-cyan-500/15 dark:text-cyan-400"          },
+  { label: "Closed",                value: closed,      icon: XCircle,      cls: "border-t-red-400",     iconCls: "bg-red-100 text-red-600 dark:bg-red-500/12 dark:text-red-400"              },
 ];
 
 // ── Status breakdown per source ───────────────────
@@ -42,7 +43,7 @@ export default function PollRequestsPage() {
     <DashboardLayout title="Poll Requests" subtitle={`${total} requests received · Q2 2026`}>
 
       {/* Stat cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-7 gap-3">
         {statCards.map(({ label, value, icon: Icon, cls, iconCls }) => (
           <div key={label} className={`glass rounded-xl p-4 border-t-2 ${cls}`}>
             <div className={`w-7 h-7 rounded-lg ${iconCls} flex items-center justify-center mb-3`}>
