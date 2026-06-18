@@ -4,7 +4,7 @@ const total = kpiData.find((k) => k.label === "Total Polls")?.value ?? 32;
 
 export function TotalPollsBreakdown() {
   return (
-    <div className="glass rounded-xl p-4">
+    <div className="glass rounded-xl p-4 max-w-sm">
       <p className="text-xs font-semibold text-slate-700 dark:text-slate-300 mb-3">
         Total Polls Breakdown — <span className="text-slate-900 dark:text-slate-100">{total}</span>
       </p>
