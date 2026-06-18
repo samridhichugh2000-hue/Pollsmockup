@@ -19,7 +19,7 @@ export function LifecycleTracker() {
     <div className="glass rounded-xl p-5">
       <div className="flex items-center justify-between mb-5">
         <div>
-          <h2 className="text-sm font-semibold text-slate-900 dark:text-slate-100">Poll Lifecycle Tracker</h2>
+
           <p className="text-xs text-slate-500 mt-0.5">POLL-2026-007 · Training Satisfaction Survey</p>
         </div>
         <select
