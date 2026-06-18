@@ -1,7 +1,6 @@
 import { DashboardLayout }      from "@/components/dashboard/DashboardLayout";
 import { QuickFilters }          from "@/components/dashboard/QuickFilters";
 import { KPICards }              from "@/components/dashboard/KPICards";
-import { LifecycleTracker }      from "@/components/dashboard/LifecycleTracker";
 import { PollRequestsTable }     from "@/components/dashboard/PollRequestsTable";
 import { FeedbackTable }         from "@/components/dashboard/FeedbackTable";
 import { ActionReport }          from "@/components/dashboard/ActionReport";
@@ -16,7 +15,6 @@ export default function OverviewPage() {
       <QuickFilters />
 
       <section aria-label="KPI Overview"><KPICards /></section>
-      <section aria-label="Lifecycle Tracker"><LifecycleTracker /></section>
       <section aria-label="Poll Requests"><PollRequestsTable /></section>
       <section aria-label="Poll Cadence"><PollCadence /></section>
       <section aria-label="Feedback"><FeedbackTable /></section>
