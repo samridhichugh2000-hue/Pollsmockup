@@ -77,11 +77,12 @@ export interface CadencePoll {
 // KPI Data
 // ─────────────────────────────────────────────
 export const kpiData = [
-  { label: "Total Polls",               value: 32, delta: "+4 this month", color: "purple", icon: "pie-chart" },
-  { label: "Active Polls",              value: 8,  delta: "Live",          color: "cyan",   icon: "radio"     },
-  { label: "Polls Not Closed",          value: 14, delta: "Action needed", color: "orange", icon: "clock-4"   },
-  { label: "Polls Sent for Approval",   value: 7,  delta: "This quarter",  color: "blue",   icon: "send"      },
-  { label: "Awaiting Approval",         value: 5,  delta: "Urgent",        color: "amber",  icon: "clock"     },
+  { label: "Total Polls",               value: 32, delta: "↑4 new",        color: "purple", icon: "pie-chart" },
+  { label: "Not Sent for Approval",     value: 6,  delta: "Pending",       color: "cyan",   icon: "radio"     },
+  { label: "Approval Pending",          value: 5,  delta: "Urgent",        color: "orange", icon: "clock-4"   },
+  { label: "Active Polls",              value: 8,  delta: "Live",          color: "blue",   icon: "send"      },
+  { label: "Polls Closed",              value: 14, delta: "Done",          color: "amber",  icon: "clock"     },
+  { label: "Results Pending to Share",  value: 7,  delta: "Action needed", color: "indigo", icon: "inbox"     },
   { label: "Total Feedback Received",   value: 87, delta: "+23 this week", color: "indigo", icon: "inbox"     },
   { label: "Actionable Feedbacks",      value: 24, delta: "Need review",   color: "orange", icon: "zap"       },
   { label: "Non-Actionable Feedbacks",  value: 31, delta: "Archived",      color: "slate",  icon: "archive"   },
