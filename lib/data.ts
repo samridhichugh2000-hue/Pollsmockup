@@ -77,19 +77,23 @@ export interface CadencePoll {
 // KPI Data
 // ─────────────────────────────────────────────
 export const kpiData = [
-  { label: "Total Polls",               value: 32, delta: "↑4 new",        color: "purple", icon: "pie-chart" },
-  { label: "Not Sent for Approval",     value: 6,  delta: "Pending",       color: "cyan",   icon: "radio"     },
-  { label: "Approval Pending",          value: 5,  delta: "Urgent",        color: "orange", icon: "clock-4"   },
-  { label: "Active Polls",              value: 8,  delta: "Live",          color: "blue",   icon: "send"      },
-  { label: "Polls Closed",              value: 14, delta: "Done",          color: "amber",  icon: "clock"     },
-  { label: "Results Pending to Share",  value: 7,  delta: "Action needed", color: "indigo", icon: "inbox"     },
-  { label: "Total Cadence Polls",        value: 12, delta: "Recurring",    color: "violet", icon: "repeat"    },
-  { label: "Scheduled",                 value: 9,  delta: "Upcoming",      color: "teal",   icon: "calendar"  },
-  { label: "Pending Cadence Polls",      value: 3,  delta: "Needs action",  color: "rose",   icon: "alert"     },
-  { label: "Total Feedback Received",   value: 87, delta: "+23 this week", color: "indigo", icon: "inbox"     },
-  { label: "Actionable Feedbacks",      value: 24, delta: "Need review",   color: "orange", icon: "zap"       },
-  { label: "Non-Actionable Feedbacks",  value: 31, delta: "Archived",      color: "slate",  icon: "archive"   },
-  { label: "Feedbacks Not Closed",      value: 18, delta: "Pending",       color: "red",    icon: "folder-x"  },
+  { label: "Total Polls",              value: 32, delta: "↑4 new",       color: "purple", icon: "pie-chart" },
+  { label: "Total Cadence Polls",      value: 12, delta: "Recurring",    color: "violet", icon: "repeat"    },
+  { label: "Scheduled",                value: 9,  delta: "Upcoming",     color: "teal",   icon: "calendar"  },
+  { label: "Pending Cadence Polls",    value: 3,  delta: "Needs action", color: "rose",   icon: "alert"     },
+  { label: "Total Feedback Received",  value: 87, delta: "+23 this week",color: "indigo", icon: "inbox"     },
+  { label: "Actionable Feedbacks",     value: 24, delta: "Need review",  color: "orange", icon: "zap"       },
+  { label: "Non-Actionable Feedbacks", value: 31, delta: "Archived",     color: "slate",  icon: "archive"   },
+  { label: "Feedbacks Not Closed",     value: 18, delta: "Pending",      color: "red",    icon: "folder-x"  },
+];
+
+export const totalPollsBreakdown = [
+  { label: "Not Sent for Approval",        value: 6,  color: "cyan"   },
+  { label: "Approval Pending",             value: 5,  color: "orange" },
+  { label: "Active Polls",                 value: 8,  color: "blue"   },
+  { label: "Polls Closed",                 value: 14, color: "green"  },
+  { label: "Poll Result Not Sent to Sir",  value: 4,  color: "amber"  },
+  { label: "Poll Result Not Sent to Voter",value: 3,  color: "red"    },
 ];
 
 // ─────────────────────────────────────────────
