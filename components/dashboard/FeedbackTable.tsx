@@ -15,6 +15,9 @@ interface PendingReviewItem {
   submittedDate: string;
   detail: string;
   department: string;
+  rmsTaskId?: string;
+  rmsTaskPending?: boolean;
+  rmsFollowUpDone?: boolean;
 }
 
 const categoryColor: Record<ReviewCategory, string> = {
@@ -23,21 +26,33 @@ const categoryColor: Record<ReviewCategory, string> = {
   "Annexure Pending from Sir":  "bg-red-50 border-red-200 text-red-700 dark:bg-red-500/10 dark:border-red-500/25 dark:text-red-300",
 };
 
+// Static RMS task details for "RMS Task Raised" items (index i % 3 === 0)
+const rmsTaskData = [
+  { rmsTaskId: "RMS-2026-041", rmsTaskPending: false, rmsFollowUpDone: true  },
+  { rmsTaskId: "RMS-2026-057", rmsTaskPending: true,  rmsFollowUpDone: false },
+  { rmsTaskId: "RMS-2026-063", rmsTaskPending: true,  rmsFollowUpDone: true  },
+  { rmsTaskId: "RMS-2026-078", rmsTaskPending: false, rmsFollowUpDone: true  },
+];
+
 // Derive pending-review items from existing feedback data
+let rmsIdx = 0;
 const pendingReviewItems: PendingReviewItem[] = feedbackItems
   .filter((fb) => fb.status === "Open" || fb.status === "In Progress" || fb.status === "Pending")
   .map((fb, i) => {
     const categories: ReviewCategory[] = ["RMS Task Raised", "Action Yet to Start", "Annexure Pending from Sir"];
+    const category = categories[i % 3];
+    const rms = category === "RMS Task Raised" ? rmsTaskData[rmsIdx++ % rmsTaskData.length] : {};
     return {
       id: fb.id,
       pollId: fb.pollId,
       pollTitle: fb.pollTitle,
       summary: fb.summary,
       owner: fb.owner,
-      category: categories[i % 3],
+      category,
       submittedDate: fb.submittedDate,
       detail: fb.detail,
       department: fb.department,
+      ...rms,
     };
   });
 
@@ -110,6 +125,20 @@ export function FeedbackTable() {
                             <span>Owner: <span className="text-slate-700 dark:text-slate-400">{item.owner}</span></span>
                             <span>Category: <span className="text-slate-700 dark:text-slate-400">{item.category}</span></span>
                           </div>
+                          {item.category === "RMS Task Raised" && item.rmsTaskId && (
+                            <div className="mt-3 pt-3 border-t border-slate-200 dark:border-white/8 flex flex-wrap gap-3">
+                              <div className="flex items-center gap-1.5 bg-orange-50 dark:bg-orange-500/10 border border-orange-200 dark:border-orange-500/25 rounded-lg px-3 py-1.5">
+                                <span className="text-[10px] text-slate-500">RMS Task ID</span>
+                                <span className="text-[10px] font-bold text-orange-700 dark:text-orange-300 font-mono">{item.rmsTaskId}</span>
+                              </div>
+                              <div className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 border text-[10px] font-semibold ${item.rmsTaskPending ? "bg-red-50 border-red-200 text-red-600 dark:bg-red-500/10 dark:border-red-500/25 dark:text-red-400" : "bg-emerald-50 border-emerald-200 text-emerald-700 dark:bg-emerald-500/10 dark:border-emerald-500/25 dark:text-emerald-400"}`}>
+                                Task Pending: {item.rmsTaskPending ? "Yes" : "No"}
+                              </div>
+                              <div className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 border text-[10px] font-semibold ${item.rmsFollowUpDone ? "bg-emerald-50 border-emerald-200 text-emerald-700 dark:bg-emerald-500/10 dark:border-emerald-500/25 dark:text-emerald-400" : "bg-amber-50 border-amber-200 text-amber-700 dark:bg-amber-500/10 dark:border-amber-500/25 dark:text-amber-400"}`}>
+                                Follow-up Done: {item.rmsFollowUpDone ? "Yes" : "Pending"}
+                              </div>
+                            </div>
+                          )}
                         </div>
                       </td>
                     </tr>
