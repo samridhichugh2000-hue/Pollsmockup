@@ -31,22 +31,6 @@ export function KPICards() {
             <p className="text-lg font-bold text-slate-900 dark:text-slate-100 leading-none">{kpi.value}</p>
             <p className="text-[9px] text-slate-500 dark:text-slate-400 mt-1 leading-tight">{kpi.label}</p>
             <p className={`text-[8px] font-medium mt-0.5 ${col.delta}`}>{kpi.delta}</p>
-            {i === 6 && (
-              <div className="mt-2 pt-2 border-t border-slate-100 dark:border-slate-700 flex flex-col gap-0.5">
-                <div className="flex justify-between">
-                  <span className="text-[7px] text-slate-400 leading-tight">RMS Task Raised</span>
-                  <span className="text-[7px] font-semibold text-slate-600 dark:text-slate-300">8</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-[7px] text-slate-400 leading-tight">Action Yet to Start</span>
-                  <span className="text-[7px] font-semibold text-slate-600 dark:text-slate-300">10</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-[7px] text-slate-400 leading-tight">Approval Pending</span>
-                  <span className="text-[7px] font-semibold text-slate-600 dark:text-slate-300">5</span>
-                </div>
-              </div>
-            )}
           </div>
         );
         return kpi.href
