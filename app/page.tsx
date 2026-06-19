@@ -20,7 +20,7 @@ export default function OverviewPage() {
         <FeedbackBreakdown />
       </section>
       <section aria-label="Poll Requests"><PollRequestsTable /></section>
-      <section aria-label="Feedback"><FeedbackTable /></section>
+      <section id="feedback-pending" aria-label="Feedback"><FeedbackTable /></section>
 
       <section aria-label="Action Report and Closure" className="grid grid-cols-1 xl:grid-cols-2 gap-5">
         <ActionReport />

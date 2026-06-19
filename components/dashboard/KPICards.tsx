@@ -33,6 +33,14 @@ export function KPICards() {
             <p className={`text-[8px] font-medium mt-0.5 ${col.delta}`}>{kpi.delta}</p>
           </div>
         );
+        if (kpi.href?.startsWith("#")) {
+          return (
+            <div key={kpi.label} onClick={() => {
+              const el = document.getElementById(kpi.href!.slice(1));
+              el?.scrollIntoView({ behavior: "smooth" });
+            }}>{card}</div>
+          );
+        }
         return kpi.href
           ? <Link key={kpi.label} href={kpi.href}>{card}</Link>
           : <div key={kpi.label}>{card}</div>;
