@@ -1,6 +1,20 @@
 import { Search, Calendar, Bell, ChevronDown } from "lucide-react";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
+function currentQuarterLabel() {
+  const now = new Date();
+  const month = now.getMonth(); // 0-indexed
+  const year = now.getFullYear();
+  const quarters = [
+    { label: "Jan – Mar", q: "Q1" },
+    { label: "Apr – Jun", q: "Q2" },
+    { label: "Jul – Sep", q: "Q3" },
+    { label: "Oct – Dec", q: "Q4" },
+  ];
+  const { label } = quarters[Math.floor(month / 3)];
+  return `${label} ${year}`;
+}
+
 interface HeaderProps {
   title?: string;
   subtitle?: string;
@@ -37,7 +51,7 @@ export function Header({ title = "Polls Dashboard", subtitle = "Overview · Q2 2
           bg-slate-100 border border-slate-200 hover:bg-slate-200
           dark:bg-white/5 dark:border-white/8 dark:hover:bg-white/8">
           <Calendar className="w-3.5 h-3.5 text-slate-400" />
-          <span className="text-xs text-slate-700 dark:text-slate-300 hidden sm:inline">Jan – Jun 2026</span>
+          <span className="text-xs text-slate-700 dark:text-slate-300 hidden sm:inline">{currentQuarterLabel()}</span>
           <ChevronDown className="w-3 h-3 text-slate-400" />
         </div>
 
