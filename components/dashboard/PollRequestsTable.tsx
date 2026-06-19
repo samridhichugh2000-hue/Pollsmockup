@@ -2,6 +2,10 @@
 import { useState } from "react";
 import { ArrowRight, Link2, Mail, ClipboardCopy, Check, ExternalLink } from "lucide-react";
 import { pollRequests, FORM_LINK } from "@/lib/data";
+
+const pendingPolls = pollRequests.filter(
+  (r) => r.status !== "Active" && r.status !== "Closed"
+);
 import { StatusBadge } from "@/components/ui/StatusBadge";
 
 function CopyLinkButton() {
@@ -60,8 +64,8 @@ export function PollRequestsTable({ showBanner = false }: { showBanner?: boolean
         style={{ borderBottom: "1px solid var(--border-divider)" }}
       >
         <div>
-          <h2 className="text-sm font-semibold text-slate-900 dark:text-slate-100">Poll Requests Received</h2>
-          <p className="text-xs text-slate-500 mt-0.5">{pollRequests.length} total · Sources: Mailbox &amp; Form</p>
+          <h2 className="text-sm font-semibold text-slate-900 dark:text-slate-100">Total Pending Polls</h2>
+          <p className="text-xs text-slate-500 mt-0.5">{pendingPolls.length} pending · Sources: Mailbox &amp; Form</p>
         </div>
         <button className="flex items-center gap-1 text-xs text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors">
           View all <ArrowRight className="w-3 h-3" />
@@ -83,7 +87,7 @@ export function PollRequestsTable({ showBanner = false }: { showBanner?: boolean
             </tr>
           </thead>
           <tbody>
-            {pollRequests.map((poll) => (
+            {pendingPolls.map((poll) => (
               <tr
                 key={poll.id}
                 className="trow cursor-pointer"
