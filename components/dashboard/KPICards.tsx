@@ -1,3 +1,4 @@
+"use client";
 import { PieChart, Clock, Inbox, Megaphone, TrendingUp, CheckCircle2, AlertCircle } from "lucide-react";
 import Link from "next/link";
 import { kpiData } from "@/lib/data";
