@@ -4,7 +4,7 @@ import { FeedbackTable }    from "@/components/dashboard/FeedbackTable";
 import { ActionReport }     from "@/components/dashboard/ActionReport";
 import { FeedbackClosure }  from "@/components/dashboard/FeedbackClosure";
 import { StatusBadge }      from "@/components/ui/StatusBadge";
-import { feedbackItems }    from "@/lib/data";
+import { feedbackItems, pollRequests }    from "@/lib/data";
 
 // ── Derived stats ─────────────────────────────────
 const total        = feedbackItems.length;
@@ -26,6 +26,12 @@ const statCards = [
   { label: "Closed",             value: closedItems, icon: XCircle,      cls: "border-t-emerald-500",iconCls: "bg-emerald-100 text-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-400"},
   { label: "Overdue",            value: overdue,     icon: Clock,        cls: "border-t-red-600",    iconCls: "bg-red-100 text-red-700 dark:bg-red-500/15 dark:text-red-400"              },
 ];
+
+// ── Polls with no feedback received ──────────────
+const pollIdsWithFeedback = new Set(feedbackItems.map((f) => f.pollId));
+const pollsWithoutFeedback = pollRequests.filter(
+  (p) => (p.status === "Active" || p.status === "Closed" || p.status === "Pending Closure") && !pollIdsWithFeedback.has(p.id)
+);
 
 // ── Department breakdown ──────────────────────────
 const deptMap: Record<string, number> = {};
@@ -118,20 +124,25 @@ export default function FeedbackPage() {
           </div>
 
           <div className="mt-5 pt-4" style={{ borderTop: "1px solid var(--border-divider)" }}>
-            <h3 className="text-xs font-semibold text-slate-700 dark:text-slate-300 mb-3">Top Open Items</h3>
-            <div className="space-y-2">
-              {feedbackItems.filter(f => f.status === "Open" || f.overdue).slice(0, 4).map((fb) => (
-                <div key={fb.id} className="flex items-start justify-between gap-2 text-xs">
-                  <div className="min-w-0">
-                    <p className="text-slate-700 dark:text-slate-300 truncate max-w-[220px]">{fb.summary}</p>
-                    <p className="text-slate-400 text-[10px]">{fb.pollId} · {fb.owner}</p>
+            <h3 className="text-xs font-semibold text-slate-700 dark:text-slate-300 mb-3">
+              Polls with No Feedback Received
+              <span className="ml-2 text-[10px] font-normal text-red-500">{pollsWithoutFeedback.length} poll{pollsWithoutFeedback.length !== 1 ? "s" : ""}</span>
+            </h3>
+            {pollsWithoutFeedback.length === 0 ? (
+              <p className="text-xs text-slate-400">All active/closed polls have feedback.</p>
+            ) : (
+              <div className="space-y-2">
+                {pollsWithoutFeedback.map((poll) => (
+                  <div key={poll.id} className="flex items-start justify-between gap-2 text-xs">
+                    <div className="min-w-0">
+                      <p className="text-slate-700 dark:text-slate-300 truncate max-w-[220px]">{poll.title}</p>
+                      <p className="text-slate-400 text-[10px]">{poll.id} · {poll.requester} · {poll.department}</p>
+                    </div>
+                    <span className="text-[10px] text-amber-600 dark:text-amber-400 font-semibold flex-shrink-0">{poll.status}</span>
                   </div>
-                  {fb.overdue && (
-                    <span className="text-[10px] text-red-600 dark:text-red-400 font-semibold flex-shrink-0">Overdue</span>
-                  )}
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
