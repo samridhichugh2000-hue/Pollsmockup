@@ -9,7 +9,6 @@ import { ActionReport }          from "@/components/dashboard/ActionReport";
 import { FeedbackClosure }       from "@/components/dashboard/FeedbackClosure";
 import { ParticipationSection }  from "@/components/dashboard/ParticipationSection";
 import { FollowUpPanel }         from "@/components/dashboard/FollowUpPanel";
-import { PollCadence }           from "@/components/dashboard/PollCadence";
 
 export default function OverviewPage() {
   return (
@@ -21,7 +20,6 @@ export default function OverviewPage() {
         <FeedbackBreakdown />
       </section>
       <section aria-label="Poll Requests"><PollRequestsTable /></section>
-      <section aria-label="Poll Cadence"><PollCadence /></section>
       <section aria-label="Feedback"><FeedbackTable /></section>
 
       <section aria-label="Action Report and Closure" className="grid grid-cols-1 xl:grid-cols-2 gap-5">
