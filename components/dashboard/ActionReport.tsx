@@ -33,7 +33,7 @@ export function ActionReport() {
           <div
             key={c.label}
             onClick={c.scrollTo ? () => scrollTo(c.scrollTo!) : undefined}
-            className={`p-3 rounded-xl border text-center ${c.light} ${c.dark} ${c.scrollTo ? "cursor-pointer hover:opacity-80 transition-opacity" : ""}`}
+            className={`p-3 rounded-xl border text-center cursor-pointer hover:opacity-75 transition-opacity ${c.light} ${c.dark}`}
           >
             <p className="text-xl font-bold">{c.value}</p>
             <p className="text-[10px] mt-0.5 opacity-80 leading-tight">{c.label}</p>
