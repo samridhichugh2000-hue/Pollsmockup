@@ -16,7 +16,7 @@ const colorConfig = [
 
 export function KPICards() {
   return (
-    <div className="grid grid-cols-7 gap-2">
+    <div className="grid grid-cols-7 gap-2 items-start">
       {kpiData.map((kpi, i) => {
         const Icon = icons[i];
         const col  = colorConfig[i];

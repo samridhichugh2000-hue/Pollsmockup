@@ -81,7 +81,7 @@ export const kpiData = [
   { label: "Total Pending Polls",            value: 11, delta: "Needs action", color: "violet", icon: "clock", href: "/poll-requests" },
   { label: "Total Feedbacks Received",       value: 87, delta: "+23 this week", color: "emerald", icon: "inbox" },
   { label: "Policy Announced After Feedback",  value: 9,  delta: "This quarter", color: "blue",   icon: "megaphone" },
-  { label: "Non RMS Improvement After Feedback",value: 14, delta: "Logged",       color: "orange", icon: "trending"  },
+  { label: "Process Improvement After Feedback", value: 14, delta: "Logged",       color: "orange", icon: "trending"  },
   { label: "RMS Improvement After Feedback",    value: 6,  delta: "Tracked",      color: "teal",   icon: "check"     },
   { label: "Pending Review",                    value: 23, delta: "Needs attention", color: "red",  icon: "alert-circle" },
 ];
