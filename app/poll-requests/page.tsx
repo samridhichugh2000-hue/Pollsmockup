@@ -113,7 +113,7 @@ export default function PollRequestsPage() {
       </div>
 
       {/* Full table */}
-      <PollRequestsTable />
+      <PollRequestsTable showBanner />
 
     </DashboardLayout>
   );

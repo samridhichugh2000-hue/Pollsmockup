@@ -25,10 +25,10 @@ function CopyLinkButton() {
   );
 }
 
-export function PollRequestsTable() {
+export function PollRequestsTable({ showBanner = false }: { showBanner?: boolean }) {
   return (
     <div className="glass rounded-xl overflow-hidden h-full">
-      {/* Shareable Form Banner */}
+      {showBanner && (
       <div
         className="px-5 py-3 flex flex-wrap items-center justify-between gap-3"
         style={{ borderBottom: "1px solid var(--border-divider)", background: "rgba(124,58,237,0.04)" }}
@@ -52,6 +52,7 @@ export function PollRequestsTable() {
           </a>
         </div>
       </div>
+      )}
 
       {/* Header */}
       <div
