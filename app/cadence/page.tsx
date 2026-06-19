@@ -1,3 +1,4 @@
+"use client";
 import { CalendarClock, CheckCircle2, Clock, AlertCircle, Zap, Users } from "lucide-react";
 import { DashboardLayout } from "@/components/dashboard/DashboardLayout";
 import { PollCadence }     from "@/components/dashboard/PollCadence";
@@ -41,7 +42,11 @@ export default function CadencePage() {
           { label: "Overdue",             value: overdue,     cls: "border-t-red-500",    iconCls: "bg-red-100 text-red-600 dark:bg-red-500/12 dark:text-red-400",               Icon: AlertCircle   },
           { label: "Auto-Approve",        value: autoApprove, cls: "border-t-cyan-500",   iconCls: "bg-cyan-100 text-cyan-600 dark:bg-cyan-500/15 dark:text-cyan-400",           Icon: Zap           },
         ].map(({ label, value, cls, iconCls, Icon }) => (
-          <div key={label} className={`glass rounded-xl p-4 border-t-2 ${cls}`}>
+          <div
+            key={label}
+            className={`glass rounded-xl p-4 border-t-2 ${cls} cursor-pointer hover:opacity-75 transition-opacity`}
+            onClick={() => document.getElementById("cadence-table")?.scrollIntoView({ behavior: "smooth" })}
+          >
             <div className={`w-7 h-7 rounded-lg ${iconCls} flex items-center justify-center mb-3`}>
               <Icon className="w-3.5 h-3.5" />
             </div>
@@ -148,7 +153,7 @@ export default function CadencePage() {
       </div>
 
       {/* Full cadence table */}
-      <PollCadence />
+      <section id="cadence-table"><PollCadence /></section>
 
     </DashboardLayout>
   );
