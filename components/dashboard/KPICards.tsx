@@ -1,7 +1,8 @@
-import { PieChart, Repeat2, Inbox, Megaphone, TrendingUp, CheckCircle2 } from "lucide-react";
+import { PieChart, Clock, Inbox, Megaphone, TrendingUp, CheckCircle2 } from "lucide-react";
+import Link from "next/link";
 import { kpiData } from "@/lib/data";
 
-const icons = [PieChart, Repeat2, Inbox, Megaphone, TrendingUp, CheckCircle2];
+const icons = [PieChart, Clock, Inbox, Megaphone, TrendingUp, CheckCircle2];
 
 const colorConfig = [
   { border: "border-t-purple-500",  iconBg: "bg-purple-100",  iconTxt: "text-purple-600 dark:text-purple-400",  delta: "text-emerald-600 dark:text-emerald-400" },
@@ -18,9 +19,8 @@ export function KPICards() {
       {kpiData.map((kpi, i) => {
         const Icon = icons[i];
         const col  = colorConfig[i];
-        return (
+        const card = (
           <div
-            key={kpi.label}
             className={`bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-3 border-t-2 ${col.border} transition-all cursor-pointer fade-up`}
             style={{ animationDelay: `${i * 55}ms` }}
           >
@@ -32,6 +32,9 @@ export function KPICards() {
             <p className={`text-[8px] font-medium mt-0.5 ${col.delta}`}>{kpi.delta}</p>
           </div>
         );
+        return kpi.href
+          ? <Link key={kpi.label} href={kpi.href}>{card}</Link>
+          : <div key={kpi.label}>{card}</div>;
       })}
     </div>
   );
