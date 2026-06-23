@@ -54,6 +54,19 @@ export default function PollRequestsPage() {
   return (
     <DashboardLayout title="Poll Requests" subtitle={`${total} requests received · Q2 2026`}>
 
+      {/* Stat cards */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-7 gap-3">
+        {statCards.map(({ label, value, icon: Icon, cls, iconCls }) => (
+          <div key={label} className={`glass rounded-xl p-4 border-t-2 ${cls}`}>
+            <div className={`w-7 h-7 rounded-lg ${iconCls} flex items-center justify-center mb-3`}>
+              <Icon className="w-3.5 h-3.5" />
+            </div>
+            <p className="text-2xl font-bold text-slate-900 dark:text-slate-100">{value}</p>
+            <p className="text-[10px] text-slate-500 mt-0.5">{label}</p>
+          </div>
+        ))}
+      </div>
+
       {/* Lifecycle stage summary */}
       <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-5 py-4">
         <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-3">Polls by Lifecycle Stage</p>
@@ -77,19 +90,6 @@ export default function PollRequestsPage() {
             </div>
           ))}
         </div>
-      </div>
-
-      {/* Stat cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-7 gap-3">
-        {statCards.map(({ label, value, icon: Icon, cls, iconCls }) => (
-          <div key={label} className={`glass rounded-xl p-4 border-t-2 ${cls}`}>
-            <div className={`w-7 h-7 rounded-lg ${iconCls} flex items-center justify-center mb-3`}>
-              <Icon className="w-3.5 h-3.5" />
-            </div>
-            <p className="text-2xl font-bold text-slate-900 dark:text-slate-100">{value}</p>
-            <p className="text-[10px] text-slate-500 mt-0.5">{label}</p>
-          </div>
-        ))}
       </div>
 
       {/* Source breakdown */}
