@@ -6,13 +6,24 @@ import { StatusBadge }       from "@/components/ui/StatusBadge";
 import { pollRequests, FORM_LINK } from "@/lib/data";
 
 // ── Derived stats ─────────────────────────────────
-const total       = pollRequests.length;
-const fromMailbox = pollRequests.filter((r) => r.source === "Mailbox").length;
-const fromForm    = pollRequests.filter((r) => r.source === "Form").length;
-const awaiting    = pollRequests.filter((r) => r.status === "Awaiting Approval").length;
-const active      = pollRequests.filter((r) => r.status === "Active").length;
-const closed      = pollRequests.filter((r) => r.status === "Closed").length;
-const draft       = pollRequests.filter((r) => r.status === "Draft").length;
+const total          = pollRequests.length;
+const fromMailbox    = pollRequests.filter((r) => r.source === "Mailbox").length;
+const fromForm       = pollRequests.filter((r) => r.source === "Form").length;
+const awaiting       = pollRequests.filter((r) => r.status === "Awaiting Approval" || r.status === "Acknowledged").length;
+const active         = pollRequests.filter((r) => r.status === "Active").length;
+const closed         = pollRequests.filter((r) => r.status === "Closed").length;
+const draft          = pollRequests.filter((r) => r.status === "Draft").length;
+const pendingClosure = pollRequests.filter((r) => r.status === "Pending Closure").length;
+
+// ── Lifecycle stage counts ─────────────────────────
+const lifecycleStages = [
+  { label: "Draft",                 count: draft,          dot: "bg-slate-400",   bar: "bg-slate-400",   text: "text-slate-600 dark:text-slate-400"   },
+  { label: "Not Sent for Approval", count: draft,          dot: "bg-rose-400",    bar: "bg-rose-400",    text: "text-rose-600 dark:text-rose-400"     },
+  { label: "Awaiting Approval",     count: awaiting,       dot: "bg-amber-400",   bar: "bg-amber-400",   text: "text-amber-600 dark:text-amber-400"   },
+  { label: "Active",                count: active,         dot: "bg-emerald-500", bar: "bg-emerald-500", text: "text-emerald-600 dark:text-emerald-400"},
+  { label: "Pending Closure",       count: pendingClosure, dot: "bg-orange-400",  bar: "bg-orange-400",  text: "text-orange-600 dark:text-orange-400" },
+  { label: "Closed",                count: closed,         dot: "bg-blue-500",    bar: "bg-blue-500",    text: "text-blue-600 dark:text-blue-400"     },
+];
 
 const statCards = [
   { label: "Total Requests",        value: total,       icon: FileText,     cls: "border-t-purple-500",  iconCls: "bg-purple-100 text-purple-600 dark:bg-purple-500/15 dark:text-purple-400"  },
@@ -42,6 +53,31 @@ const breakdown = (["Mailbox", "Form"] as const).map((src) => {
 export default function PollRequestsPage() {
   return (
     <DashboardLayout title="Poll Requests" subtitle={`${total} requests received · Q2 2026`}>
+
+      {/* Lifecycle stage summary */}
+      <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-5 py-4">
+        <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-3">Polls by Lifecycle Stage</p>
+        <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
+          {lifecycleStages.map(({ label, count, dot, bar, text }) => (
+            <div key={label} className="flex flex-col gap-1.5">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-1.5">
+                  <span className={`w-2 h-2 rounded-full flex-shrink-0 ${dot}`} />
+                  <span className="text-[9px] text-slate-500 dark:text-slate-400 leading-tight">{label}</span>
+                </div>
+                <span className={`text-sm font-bold ${text}`}>{count}</span>
+              </div>
+              <div className="h-1.5 rounded-full bg-slate-100 dark:bg-white/8">
+                <div
+                  className={`h-full rounded-full ${bar} transition-all`}
+                  style={{ width: total > 0 ? `${Math.round((count / total) * 100)}%` : "0%" }}
+                />
+              </div>
+              <span className="text-[8px] text-slate-400">{total > 0 ? Math.round((count / total) * 100) : 0}% of total</span>
+            </div>
+          ))}
+        </div>
+      </div>
 
       {/* Stat cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-7 gap-3">
