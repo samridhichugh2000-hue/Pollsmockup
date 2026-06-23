@@ -1,6 +1,7 @@
 import { Mail, Link2, Clock, CheckCircle2, XCircle, FileText, Send } from "lucide-react";
 import { DashboardLayout }   from "@/components/dashboard/DashboardLayout";
 import { PollRequestsTable } from "@/components/dashboard/PollRequestsTable";
+import { PollLifecycle }     from "@/components/dashboard/PollLifecycle";
 import { StatusBadge }       from "@/components/ui/StatusBadge";
 import { pollRequests, FORM_LINK } from "@/lib/data";
 
@@ -111,6 +112,9 @@ export default function PollRequestsPage() {
           </div>
         ))}
       </div>
+
+      {/* Poll Lifecycle Tracker */}
+      <section aria-label="Poll Lifecycle"><PollLifecycle /></section>
 
       {/* Full table */}
       <PollRequestsTable showBanner />
