@@ -9,11 +9,13 @@ import { ActionReport }          from "@/components/dashboard/ActionReport";
 import { FeedbackClosure }       from "@/components/dashboard/FeedbackClosure";
 import { ParticipationSection }  from "@/components/dashboard/ParticipationSection";
 import { FollowUpPanel }         from "@/components/dashboard/FollowUpPanel";
+import { PollLifecycle }         from "@/components/dashboard/PollLifecycle";
 
 export default function OverviewPage() {
   return (
     <DashboardLayout title="Polls Dashboard" subtitle="Overview · Q2 2026">
 <section aria-label="KPI Overview"><KPICards /></section>
+      <section aria-label="Poll Lifecycle"><PollLifecycle /></section>
       <section aria-label="Breakdowns" className="grid grid-cols-3 gap-4">
         <TotalPollsBreakdown />
         <CadenceBreakdown />
