@@ -25,6 +25,12 @@ function normalise(status: string): Stage {
   return "Draft";
 }
 
+// Stage 1 ("Not Sent for Approval") label flips to "Sent for Approval" once the poll moved past it
+function resolveLabel(stage: Stage, currentIdx: number, stageIdx: number): string {
+  if (stage === "Not Sent for Approval" && stageIdx < currentIdx) return "Sent for Approval";
+  return stage;
+}
+
 function Stepper({ current }: { current: Stage }) {
   const idx = STAGES.indexOf(current);
   return (
@@ -33,13 +39,18 @@ function Stepper({ current }: { current: Stage }) {
         const done    = i < idx;
         const active  = i === idx;
         const cfg     = stageConfig[stage];
+        const label   = resolveLabel(stage, idx, i);
+        // "Sent for Approval" reuses emerald colour when done
+        const doneCfg = (stage === "Not Sent for Approval" && done)
+          ? { bg: "bg-emerald-500", fill: "bg-emerald-500" }
+          : cfg;
         return (
           <div key={stage} className="flex items-center flex-1 last:flex-none min-w-0">
             <div className="flex flex-col items-center gap-1 flex-shrink-0">
               {/* Circle */}
               <div className={`w-6 h-6 rounded-full flex items-center justify-center transition-all
                 ${active  ? `${cfg.bg} ring-2 ring-offset-2 ring-offset-white dark:ring-offset-slate-800 ${cfg.ring}` :
-                  done    ? `${cfg.bg} opacity-80` :
+                  done    ? `${doneCfg.bg} opacity-80` :
                             "bg-slate-100 dark:bg-slate-700 border-2 border-slate-200 dark:border-slate-600"}`}>
                 {done ? (
                   <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
@@ -51,16 +62,16 @@ function Stepper({ current }: { current: Stage }) {
                   <span className="w-2 h-2 rounded-full bg-slate-300 dark:bg-slate-500" />
                 )}
               </div>
-              {/* Label */}
+              {/* Label — flips to "Sent for Approval" when that stage is done */}
               <span className={`text-[7.5px] leading-tight text-center w-14 whitespace-normal
                 ${active ? `font-bold ${cfg.text}` : done ? "text-slate-400 dark:text-slate-500" : "text-slate-300 dark:text-slate-600"}`}>
-                {stage}
+                {label}
               </span>
             </div>
             {/* Connector */}
             {i < STAGES.length - 1 && (
               <div className={`flex-1 h-[3px] mx-1 rounded-full transition-all
-                ${i < idx ? `${stageConfig[STAGES[i]].fill} opacity-70` : "bg-slate-150 dark:bg-slate-700"}`} />
+                ${i < idx ? `${doneCfg.fill} opacity-70` : "bg-slate-150 dark:bg-slate-700"}`} />
             )}
           </div>
         );
